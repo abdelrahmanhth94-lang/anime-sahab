@@ -1,0 +1,14 @@
+{
+  "sources": [
+    {
+      "id": "licensed-sample",
+      "title_ar": "مثال لمحتوى مرخّص",
+      "title_en": "Licensed sample",
+      "description_ar": "أضف هنا بيانات فيديو تملك حق عرضه.",
+      "description_en": "Add a video source you are licensed to distribute.",
+      "watch_url": "",
+      "mp4_download_url": "",
+      "license_note": "Licensed source required"
+    }
+  ]
+}

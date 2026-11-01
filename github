@@ -1,0 +1,29 @@
+name: Build Anime Sahab
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - name: Generate Windows files
+        run: flutter create --platforms=windows .
+      - name: Get packages
+        run: flutter pub get
+      - name: Build Windows app
+        run: flutter build windows --release
+      - name: Package Windows app
+        shell: pwsh
+        run: |
+          Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath anime-sahab-windows.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: anime-sahab-windows
+          path: anime-sahab-windows.zip
